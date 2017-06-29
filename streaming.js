@@ -18,7 +18,7 @@ module.exports = function(RED) {
 
     org.authenticate({ username: this.connection.username, password: this.connection.password }, function(err, oauth) {
 
-      if(err) node.err(err);
+      if(err) return node.error(err);
 
       var client = org.createStreamClient();
       var stream = client.subscribe({ topic: config.pushTopic });
